@@ -1,0 +1,14 @@
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    volumes:
+      - ./data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - # your ssl key and cert folder:your ssl key folder
+    environment:
+      - SSL_KEY= #your SSL key.key
+      - SSL_CERT= #your SSL cert.crt
+      - UPTIME_KUMA_DISABLE_FRAME_SAMEORIGIN=1
+    ports:
+      # <Host Port>:<Container Port>
+      - 3000:3001
+    restart: unless-stopped
